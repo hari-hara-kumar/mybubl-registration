@@ -1,11 +1,10 @@
 header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     padding: 10px 20px;
     .logo {
-        height: 75px;
-        width: 160px;
+        height: 65px;
     }
     .phone {
         img {
@@ -228,10 +227,28 @@ main {
 
 /* On screens that are 600px wide or less, the background color is olive */
 @media screen and (max-width: 600px) {
+    .row-area {
+        margin: 0 !important;
+    }
     .row-more {
         grid-column-gap: 0.5rem !important;
         grid-row-gap: 0.5rem !important;
         grid-template-columns: 1fr 1fr !important;
+
+        input[type="checkbox"]:before {
+            width: 11px;
+            height: 11px;
+            top: 0;
+            left: 0;
+            border: 2px solid #ccc5c5;
+            border-radius: 3px;
+        }
+        input[type="checkbox"]:checked:after {
+            width: 4px;
+            height: 8px;
+            top: 2px;
+            left: 6px;
+        }
     }
     .row-area {
         grid-column-gap: 0.5rem !important;
@@ -245,7 +262,6 @@ main {
     }
     .logo {
         height: 35px !important;
-        width: 80px !important;
     }
     .phone {
         img {
@@ -269,6 +285,9 @@ main {
         display: grid;
         grid-template-columns: 3fr 1fr 3fr;
         grid-gap: 10px;
+    }
+    label {
+        font-size: 12px !important;
     }
 }
 @media screen and (min-width: 600px) and (max-width: 992px) {
