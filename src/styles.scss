@@ -1,0 +1,29 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+.t-a-r {
+    text-align: right;
+}
+input:focus,
+textarea:focus,
+button:focus,
+select:focus {
+    outline: none;
+}
+* {
+    font-family: "Nunito", sans-serif;
+}

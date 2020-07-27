@@ -1,0 +1,280 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 20px;
+    .logo {
+        height: 75px;
+        width: 160px;
+    }
+    .phone {
+        img {
+            height: 39px;
+            width: 39px;
+            vertical-align: middle;
+        }
+        a {
+            text-decoration: none;
+            color: #1c1c1c;
+            vertical-align: middle;
+        }
+    }
+}
+footer {
+    background: #1f8b8d;
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: 3fr 1fr 3fr;
+    grid-gap: 10px;
+    .story {
+        color: #fff;
+        font-size: 12px;
+        img {
+            height: 50px;
+        }
+
+        p {
+            line-height: 1.2;
+        }
+        .ply {
+            a {
+                color: #fff;
+                text-decoration: none;
+                margin-right: 10px;
+                font-size: 12px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .align-center {
+        text-align: center;
+    }
+}
+main {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    .bg-img {
+        background-image: url(../../assets/images/buble-bg.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 50%;
+        width: 100%;
+        position: absolute;
+        z-index: -3;
+        background-color: #1f8b8d;
+    }
+    .container {
+        width: 768px;
+        padding: 15px;
+        position: relative;
+        h5 {
+            color: #505858;
+        }
+        .journey-head,
+        .journey-content {
+            text-align: center;
+            color: #fff;
+            padding: 10px;
+        }
+        .journey-content {
+            line-height: 1.4;
+        }
+        .journey-head {
+            font-weight: bold;
+            padding: 15px;
+            font-size: 25px;
+            line-height: 1.2;
+        }
+        .form-data {
+            border-radius: 10px;
+            padding: 20px;
+            background: #ffffff;
+            border: 1px solid rgba(217, 217, 217, 0.45);
+            h5 {
+                margin: 23px 2px 10px 2px;
+                font-size: 17px;
+            }
+            .center {
+                display: flex;
+                justify-content: center;
+                padding-top: 18px;
+                button {
+                    color: #fff;
+                    background: #1d8080;
+                    border-radius: 30px;
+                    padding: 11px 23px;
+                    font-weight: bold;
+                    font-size: 16px;
+                    border: none;
+                }
+            }
+            .w-100-text {
+                width: 100%;
+                border: 1px solid #ccc5c5;
+                border-radius: 5px;
+                padding: 8px;
+                font-size: 16px;
+
+                -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                -moz-box-sizing: border-box; /* Firefox, other Gecko */
+                box-sizing: border-box;
+                resize: none;
+            }
+            .row {
+                display: grid;
+                grid-gap: 3rem;
+                grid-template-columns: 1fr 1fr;
+                margin-bottom: 13px;
+                .field {
+                    position: relative;
+                    label,
+                    input {
+                        width: 100%;
+                        display: block;
+                        color: #505858;
+                    }
+                    label {
+                        position: absolute;
+                        font-size: 12px;
+                        top: 7px;
+                        color: #707070;
+                        left: 8px;
+                        span {
+                            color: red;
+                        }
+                    }
+                    input,
+                    textarea {
+                        padding: 22px 8px 8px 8px;
+                        font-size: 16px;
+                        -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+                        -moz-box-sizing: border-box; /* Firefox, other Gecko */
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        border: 1px solid #ccc5c5;
+                        color: #505858;
+                    }
+                }
+            }
+            .row-more {
+                display: grid;
+                grid-column-gap: 3rem;
+                grid-row-gap: 1rem;
+                grid-template-columns: 1fr 1fr 1fr;
+                margin-bottom: 10px;
+                .field-checkbox {
+                    label {
+                        margin-left: 10px;
+                        vertical-align: sub;
+                        color: #707070;
+                    }
+                    input[type="checkbox"] {
+                        position: relative;
+                        cursor: pointer;
+                    }
+                    input[type="checkbox"]:before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        width: 16px;
+                        height: 16px;
+                        top: 0;
+                        left: 0;
+                        border: 2px solid #ccc5c5;
+                        border-radius: 3px;
+                        background-color: white;
+                    }
+                    input[type="checkbox"]:checked:after {
+                        content: "";
+                        display: block;
+                        width: 5px;
+                        height: 10px;
+                        border: solid #929292;
+                        border-width: 0 2px 2px 0;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                        position: absolute;
+                        top: 2px;
+                        left: 6px;
+                    }
+                }
+            }
+            .row-area {
+                display: grid;
+                grid-gap: 2rem;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                margin-left: 15px;
+                .add {
+                    height: 48px;
+                    width: 100%;
+                    font-size: 19px;
+                    font-weight: bold;
+                    text-transform: uppercase;
+                    color: #1f8b8d;
+                    background: #fff;
+                    border-radius: 6px;
+                    border: 2px solid #1f8b8d;
+                }
+            }
+        }
+    }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 600px) {
+    .row-more {
+        grid-column-gap: 0.5rem !important;
+        grid-row-gap: 0.5rem !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .row-area {
+        grid-column-gap: 0.5rem !important;
+        grid-row-gap: 0.5rem !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .row {
+        grid-column-gap: 0.5rem !important;
+        grid-row-gap: 0.5rem !important;
+        grid-template-columns: 1fr !important;
+    }
+    .logo {
+        height: 35px !important;
+        width: 80px !important;
+    }
+    .phone {
+        img {
+            height: 15px !important;
+            width: 15px !important;
+        }
+        a {
+            font-size: 16px !important;
+        }
+    }
+    .journey-head {
+        font-size: 16px !important;
+        padding: 5px !important;
+    }
+    .journey-content {
+        font-size: 14px !important;
+    }
+    footer {
+        background: #1f8b8d;
+        padding: 10px 20px;
+        display: grid;
+        grid-template-columns: 3fr 1fr 3fr;
+        grid-gap: 10px;
+    }
+}
+@media screen and (min-width: 600px) and (max-width: 992px) {
+    .row-area {
+        grid-column-gap: 0.5rem !important;
+        grid-row-gap: 0.5rem !important;
+        grid-template-columns: 1fr 1fr !important;
+    }
+}
