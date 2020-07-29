@@ -1,0 +1,14 @@
+<!-- The Modal -->
+<div class="modal" *ngIf="showModal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="head">
+            {{title}}
+            <span class="close" (click)="onCloseModal()">&times;</span>
+        </div>
+        <div class="content">
+            <p>{{message}}</p>
+        </div>
+    </div>
+
+</div>
