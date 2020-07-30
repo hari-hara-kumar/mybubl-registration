@@ -11,8 +11,8 @@ export class PostDataService {
         return this.http.post(this.baseUrl + url, data);
     }
 
-    get(url) {
-        return this.http.get(this.baseUrl + url);
+    get(url, param) {
+        return this.http.get(this.baseUrl + url, {params: param});
     }
 
 }

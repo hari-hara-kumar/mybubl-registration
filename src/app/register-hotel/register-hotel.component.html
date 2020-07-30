@@ -23,14 +23,14 @@
                     <div class="field">
                         <label for="">First Name <span>*</span></label>
                         <input type="text"
-                            [ngStyle]="{'border': submitted && registerForm.controls.firstname.errors ? '1px solid red' : ''}"
-                            formControlName="firstname">
+                            [ngStyle]="{'border': submitted && registerForm.controls.firstName.errors ? '1px solid red' : ''}"
+                            formControlName="firstName">
                     </div>
                     <div class="field">
                         <label for="">Last Name <span>*</span></label>
                         <input type="text"
-                            [ngStyle]="{'border': submitted && registerForm.controls.lastname.errors ? '1px solid red' : ''}"
-                            formControlName="lastname">
+                            [ngStyle]="{'border': submitted && registerForm.controls.lastName.errors ? '1px solid red' : ''}"
+                            formControlName="lastName">
                     </div>
                 </div>
                 <div class="row">
@@ -45,29 +45,29 @@
                     </div>
                     <div class="field">
                         <label for="">Phone Number <span>*</span></label>
-                        <input type="tel"
-                            [ngStyle]="{'border': submitted && registerForm.controls.phoneno.errors ? '1px solid red' : ''}"
-                            formControlName="phoneno">
+                        <input type="number"
+                            [ngStyle]="{'border': submitted && registerForm.controls.phoneNumber.errors ? '1px solid red' : ''}"
+                            formControlName="phoneNumber">
                     </div>
                 </div>
                 <div class="row">
                     <div class="field">
                         <label for="">Business Name <span>*</span></label>
                         <input type="text"
-                            [ngStyle]="{'border': submitted && registerForm.controls.businessname.errors ? '1px solid red' : ''}"
-                            formControlName="businessname">
+                            [ngStyle]="{'border': submitted && registerForm.controls.businessName.errors ? '1px solid red' : ''}"
+                            formControlName="businessName">
                     </div>
                     <div class="field">
                         <label for="">Business City <span>*</span></label>
                         <input type="text"
-                            [ngStyle]="{'border': submitted && registerForm.controls.businesscity.errors ? '1px solid red' : ''}"
-                            formControlName="businesscity">
+                            [ngStyle]="{'border': submitted && registerForm.controls.businessCity.errors ? '1px solid red' : ''}"
+                            formControlName="businessCity">
                     </div>
                 </div>
                 <div class="row">
                     <div class="field">
                         <label for="">Company Name (in diffrent)</label>
-                        <input type="text" formControlName="companyname">
+                        <input type="text" formControlName="companyName">
                     </div>
                 </div>
             </section>
@@ -77,8 +77,8 @@
                     <div class="field">
                         <label for="">Door no<span>*</span></label>
                         <input type="text"
-                            [ngStyle]="{'border': submitted && registerForm.controls.doorno.errors ? '1px solid red' : ''}"
-                            formControlName="doorno">
+                            [ngStyle]="{'border': submitted && registerForm.controls.doorNo.errors ? '1px solid red' : ''}"
+                            formControlName="doorNo">
                     </div>
                     <div class="field">
                         <label for="">Street/ Area<span>*</span></label>
@@ -97,67 +97,72 @@
                     <div class="field">
                         <label for="">Zip/ Postal Code <span>*</span></label>
                         <input type="tel"
-                            [ngStyle]="{'border': submitted && registerForm.controls.zipcode.errors ? '1px solid red' : ''}"
-                            formControlName="zipcode">
+                            [ngStyle]="{'border': submitted && registerForm.controls.pinCode.errors ? '1px solid red' : ''}"
+                            formControlName="pinCode">
                     </div>
                 </div>
             </section>
             <section>
                 <h5>Options</h5>
                 <div class="row-more">
-                    <div class="field-checkbox">
-                        <input type="checkbox" formControlName="wifi" name="" id="">
-                        <label for="">Wifi</label>
-                    </div>
-                    <div class="field-checkbox">
-                        <input type="checkbox" name="" id="" formControlName="carparking">
-                        <label for="">Free Car parking </label>
-                    </div>
-                    <div class="field-checkbox">
-                        <input type="checkbox" name="" id="" formControlName="projector">
-                        <label for="">Projector</label>
-                    </div>
-                    <div class="field-checkbox">
-                        <input type="checkbox" name="" id="" formControlName="tv">
-                        <label for="">TV</label>
-                    </div>
-                    <div class="field-checkbox">
-                        <input type="checkbox" name="" formControlName="beverages" id="">
-                        <label for="">Beverages</label>
+                    <div class="field-checkbox" *ngFor="let optn of optionList;let i = index">
+                        <input type="checkbox" [(ngModel)]="isChecked[i]" [ngModelOptions]="{standalone: true}" (change)="onSelectOption($event, optn, i)" name="" id="">
+                        <label for="">{{optn.name}}</label>
                     </div>
                 </div>
             </section>
-            <section formArrayName="privateares">
+            <section formArrayName="privateArea">
                 <div class="row-head">
                     <h5>Private Area </h5>
-
-
-                    <!-- <button class="add" (click)="addPrivateAreas()">Add</button> -->
                 </div>
-
                 <div class="row row-area" *ngFor="let areas of privateAreas.controls; let i=index">
                     <ng-container [formGroupName]="i">
                         <div class="field">
                             <label for="">Area Name<span>*</span></label>
                             <input type="text"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateares['controls'][i].controls.areaname.errors ? '1px solid red' : ''}"
-                                formControlName="areaname">
+                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.areaName.errors ? '1px solid red' : ''}"
+                                formControlName="areaName">
                         </div>
                         <div class="field">
                             <label for="">Number of room<span>*</span></label>
                             <input type="number"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateares['controls'][i].controls.noofrooms.errors ? '1px solid red' : ''}"
-                                formControlName="noofrooms">
+                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.numberOfRoom.errors ? '1px solid red' : ''}"
+                                formControlName="numberOfRoom">
                         </div>
                         <div class="field">
                             <label for="">Number of Seats<span>*</span></label>
-                            <input type="number"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateares['controls'][i].controls.noofseats.errors ? '1px solid red' : ''}"
-                                formControlName="noofseats">
+                            <input type="number" class="custom-input"
+                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.numberOfSeats.errors ? '1px solid red' : ''}"
+                                formControlName="numberOfSeats">
+                            <i class="fa fa-plus-circle add" *ngIf="i == 0" (click)="addPrivateAreas()"></i>
+                            <i class="fa fa-times-circle delete" *ngIf="i > 0" (click)="removePrivateAreas(i)"></i>
                         </div>
-                        <i class="fa fa-plus-circle add" *ngIf="i == 0" (click)="addPrivateAreas()"></i>
-                        <i class="fa fa-times-circle delete" *ngIf="i > 0" (click)="removePrivateAreas(i)"></i>
                     </ng-container>
+                </div>
+            </section>
+            <section>
+                <div class="row-head">
+                    <h5>Minimum Spend</h5>
+                </div>
+                <div class="row row-area">
+                    <div class="field">
+                        <label for="">Min Spend per hr. Off peak<span>*</span></label>
+                        <input type="number"
+                            [ngStyle]="{'border': submitted && registerForm.controls.offpeak.errors ? '1px solid red' : ''}"
+                            formControlName="offpeak">
+                    </div>
+                    <div class="field">
+                        <label for="">Min Spend per hr. Peak<span>*</span></label>
+                        <input type="number"
+                            [ngStyle]="{'border': submitted && registerForm.controls.peak.errors ? '1px solid red' : ''}"
+                            formControlName="peak">
+                    </div>
+                    <div class="field">
+                        <label for="">Minimum spend per hr during xmas<span>*</span></label>
+                        <input type="number"
+                            [ngStyle]="{'border': submitted && registerForm.controls.xmas.errors ? '1px solid red' : ''}"
+                            formControlName="xmas">
+                    </div>
                 </div>
             </section>
             <section>

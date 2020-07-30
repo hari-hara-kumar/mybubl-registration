@@ -10,9 +10,11 @@ import {
 
 import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { DialogService } from '../dialog/dialog.service';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class HttpConfigInterceptor implements HttpInterceptor {
+    constructor(private dialogService: DialogService) { }
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const token: string = localStorage.getItem('token');
 
@@ -39,7 +41,7 @@ export class HttpConfigInterceptor implements HttpInterceptor {
                     reason: error && error.error && error.error.reason ? error.error.reason : '',
                     status: error.status
                 };
-                // this.errorDialogService.openDialog(data);
+                this.dialogService.show.next({ message: "Conact Your Administaror", title: "Error", status: true });
                 return throwError(error);
             }));
     }
