@@ -106,8 +106,9 @@
                 <h5>Options</h5>
                 <div class="row-more">
                     <div class="field-checkbox" *ngFor="let optn of optionList;let i = index">
-                        <input type="checkbox" [(ngModel)]="isChecked[i]" [ngModelOptions]="{standalone: true}" (change)="onSelectOption($event, optn, i)" name="" id="">
-                        <label for="">{{optn.name}}</label>
+                        <input type="checkbox" [(ngModel)]="isChecked[i]" [ngModelOptions]="{standalone: true}"
+                            (change)="onSelectOption($event, optn, i)" name="" id="">
+                        <label for="">{{optn.optionName}}</label>
                     </div>
                 </div>
             </section>
@@ -126,14 +127,14 @@
                         <div class="field">
                             <label for="">Number of room<span>*</span></label>
                             <input type="number"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.numberOfRoom.errors ? '1px solid red' : ''}"
-                                formControlName="numberOfRoom">
+                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.noOfRoom.errors ? '1px solid red' : ''}"
+                                formControlName="noOfRoom">
                         </div>
                         <div class="field">
                             <label for="">Number of Seats<span>*</span></label>
                             <input type="number" class="custom-input"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.numberOfSeats.errors ? '1px solid red' : ''}"
-                                formControlName="numberOfSeats">
+                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.noOfSeats.errors ? '1px solid red' : ''}"
+                                formControlName="noOfSeats">
                             <i class="fa fa-plus-circle add" *ngIf="i == 0" (click)="addPrivateAreas()"></i>
                             <i class="fa fa-times-circle delete" *ngIf="i > 0" (click)="removePrivateAreas(i)"></i>
                         </div>
@@ -148,20 +149,20 @@
                     <div class="field">
                         <label for="">Min Spend per hr. Off peak<span>*</span></label>
                         <input type="number"
-                            [ngStyle]="{'border': submitted && registerForm.controls.offpeak.errors ? '1px solid red' : ''}"
-                            formControlName="offpeak">
+                            [ngStyle]="{'border': submitted && registerForm.controls.minOffPeak.errors ? '1px solid red' : ''}"
+                            formControlName="minOffPeak">
                     </div>
                     <div class="field">
                         <label for="">Min Spend per hr. Peak<span>*</span></label>
                         <input type="number"
-                            [ngStyle]="{'border': submitted && registerForm.controls.peak.errors ? '1px solid red' : ''}"
-                            formControlName="peak">
+                            [ngStyle]="{'border': submitted && registerForm.controls.minHrPeak.errors ? '1px solid red' : ''}"
+                            formControlName="minHrPeak">
                     </div>
                     <div class="field">
                         <label for="">Minimum spend per hr during xmas<span>*</span></label>
                         <input type="number"
-                            [ngStyle]="{'border': submitted && registerForm.controls.xmas.errors ? '1px solid red' : ''}"
-                            formControlName="xmas">
+                            [ngStyle]="{'border': submitted && registerForm.controls.minHrXmas.errors ? '1px solid red' : ''}"
+                            formControlName="minHrXmas">
                     </div>
                 </div>
             </section>
@@ -174,7 +175,6 @@
 
             <section class="center">
                 <button (click)="onSubmit()">Submit</button>
-
             </section>
 
         </div>
