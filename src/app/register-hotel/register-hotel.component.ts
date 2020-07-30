@@ -97,7 +97,7 @@ export class RegisterHotelComponent implements OnInit {
         this.isChecked = [];
         window.scrollTo(0, 0);
       } else {
-        this.dialogService.show.next({ message: 'Conact Your Administaror', title: 'Error', status: true });
+        this.dialogService.show.next({ message: 'Contact Your Administaror', title: 'Error', status: true });
       }
     });
   }
