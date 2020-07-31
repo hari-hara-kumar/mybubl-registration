@@ -7,6 +7,7 @@ import { DialogModule } from './common/dialog/dialog.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { VerifyComponent } from './verify/verify.component';
 import { HttpConfigInterceptor } from './common/interceptor/interceptor';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpConfigInterceptor } from './common/interceptor/interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: HttpConfigInterceptor,
       multi: true
-    }
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
