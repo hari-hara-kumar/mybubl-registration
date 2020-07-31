@@ -66,7 +66,11 @@ export class RegisterHotelComponent implements OnInit {
     });
   }
   getTotalUsers() {
-    this.apiService.get('user/user-list').subscribe((res: any) => {
+    const params = {
+      limit: 0,
+      offset: 0
+    };
+    this.apiService.get('user/user-list', params).subscribe((res: any) => {
       this.totalUsers = res?.data?.userListCount;
     });
   }
@@ -101,6 +105,7 @@ export class RegisterHotelComponent implements OnInit {
         this.submitted = false;
         this.isChecked = [];
         window.scrollTo(0, 0);
+        this.getTotalUsers();
       } else {
         this.dialogService.show.next({ message: res.message ? res.message : 'Contact Your Administaror', title: 'Error', status: true });
       }
@@ -110,7 +115,9 @@ export class RegisterHotelComponent implements OnInit {
     for (const key of Object.keys(this.registerForm.controls)) {
       if (this.registerForm.controls[key].invalid) {
         const invalidControl = this.el.nativeElement.querySelector('[formcontrolname="' + key + '"]');
-        invalidControl.focus();
+        if (invalidControl) {
+          invalidControl.focus();
+        }
         break;
       }
     }

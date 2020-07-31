@@ -31,18 +31,16 @@ export class HttpConfigInterceptor implements HttpInterceptor {
         return next.handle(request).pipe(
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
-                    console.log('event--->>>', event);
+                    // console.log('event--->>>', event);
                 }
                 return event;
             }),
-            catchError((error: HttpErrorResponse) => {
-                let data = {};
-                data = {
-                    reason: error && error.error && error.error.reason ? error.error.reason : '',
-                    status: error.status
-                };
-                this.dialogService.show.next({ message: "Conact Your Administaror", title: "Error", status: true });
-                return throwError(error);
+            catchError((event: HttpErrorResponse) => {
+                console.log(event);
+                if (event && event.error && event.error.message) {
+                    this.dialogService.show.next({ message: event.error.message, title: 'Error', status: true });
+                }
+                return throwError(event);
             }));
     }
 }
