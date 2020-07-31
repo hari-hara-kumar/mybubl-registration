@@ -119,24 +119,21 @@
                 <div class="row row-area" *ngFor="let areas of privateAreas.controls; let i=index">
                     <ng-container [formGroupName]="i">
                         <div class="field">
-                            <label for="">Area Name<span>*</span></label>
+                            <label for="">Name<span>*</span></label>
                             <input type="text"
                                 [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.areaName.errors ? '1px solid red' : ''}"
                                 formControlName="areaName">
                         </div>
                         <div class="field">
-                            <label for="">Number of room<span>*</span></label>
-                            <input type="number"
-                                [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.noOfRoom.errors ? '1px solid red' : ''}"
-                                formControlName="noOfRoom">
-                        </div>
-                        <div class="field">
                             <label for="">Number of Seats<span>*</span></label>
-                            <input type="number" class="custom-input"
+                            <input type="number"
                                 [ngStyle]="{'border': submitted && registerForm.controls.privateArea['controls'][i].controls.noOfSeats.errors ? '1px solid red' : ''}"
                                 formControlName="noOfSeats">
-                            <i class="fa fa-plus-circle add" *ngIf="i == 0" (click)="addPrivateAreas()"></i>
-                            <i class="fa fa-times-circle delete" *ngIf="i > 0" (click)="removePrivateAreas(i)"></i>
+                        </div>
+                        <div class="field">
+                            <button class="action-btn add" *ngIf="i == 0" (click)="addPrivateAreas()">Add</button>
+                            <button class="action-btn delete" *ngIf="i > 0"
+                                (click)="removePrivateAreas(i)">Remove</button>
                         </div>
                     </ng-container>
                 </div>
@@ -197,7 +194,7 @@
     </div>
     <div class="story t-a-r">
         <p>
-            "You are the 2023rd business signing up <br>
+            "You are the {{findingSuffix(2000+totalUsers)}} business signing up <br>
             here with us"
         </p>
         <div class="ply mt-10 ">

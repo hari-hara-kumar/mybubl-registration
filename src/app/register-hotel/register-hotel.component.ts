@@ -15,6 +15,7 @@ export class RegisterHotelComponent implements OnInit {
   optionList = [];
   optionsSelected = [];
   emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
+  totalUsers = 0;
   constructor(private fb: FormBuilder,
     private dialogService: DialogService,
     private apiService: PostDataService,
@@ -24,6 +25,7 @@ export class RegisterHotelComponent implements OnInit {
     this.getInitialData();
     this.initRegisterForm();
     this.addPrivateAreas();
+    this.getTotalUsers();
   }
   initRegisterForm() {
     this.registerForm = this.fb.group({
@@ -51,7 +53,6 @@ export class RegisterHotelComponent implements OnInit {
   createPrivateAreas(): FormGroup {
     return this.fb.group({
       areaName: ['', Validators.required],
-      noOfRoom: ['', Validators.required],
       noOfSeats: ['', Validators.required]
     });
   }
@@ -62,6 +63,11 @@ export class RegisterHotelComponent implements OnInit {
     };
     this.apiService.get('option/list', params).subscribe((res: any) => {
       this.optionList = res.data.optionList;
+    });
+  }
+  getTotalUsers() {
+    this.apiService.get('user/user-list').subscribe((res: any) => {
+      this.totalUsers = res?.data?.userListCount;
     });
   }
   addPrivateAreas() {
@@ -81,7 +87,6 @@ export class RegisterHotelComponent implements OnInit {
   }
   onSubmit() {
     this.submitted = true;
-    console.log('submitted', this.registerForm);
     if (!this.registerForm.valid) {
       this.setfocus();
       return;
@@ -90,14 +95,14 @@ export class RegisterHotelComponent implements OnInit {
     data.options = this.optionsSelected.join(',');
     this.apiService.post('user/register', data).subscribe((res: any) => {
       if (res.status == 1) {
-        this.dialogService.show.next({ message: 'Registered Successfully', title: 'Success', status: true });
+        this.dialogService.show.next({ message: 'Submitted Successfully', title: 'Success', status: true });
         this.registerForm.reset();
         this.registerForm.clearValidators();
         this.submitted = false;
         this.isChecked = [];
         window.scrollTo(0, 0);
       } else {
-        this.dialogService.show.next({ message: 'Contact Your Administaror', title: 'Error', status: true });
+        this.dialogService.show.next({ message: res.message ? res.message : 'Contact Your Administaror', title: 'Error', status: true });
       }
     });
   }
@@ -109,5 +114,20 @@ export class RegisterHotelComponent implements OnInit {
         break;
       }
     }
+  }
+
+  findingSuffix(i) {
+    const j = i % 10,
+      k = i % 100;
+    if (j == 1 && k != 11) {
+      return i + 'st';
+    }
+    if (j == 2 && k != 12) {
+      return i + 'nd';
+    }
+    if (j == 3 && k != 13) {
+      return i + 'rd';
+    }
+    return i + 'th';
   }
 }
