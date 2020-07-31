@@ -4,11 +4,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DialogModule } from './common/dialog/dialog.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { VerifyComponent } from './verify/verify.component';
+import { HttpConfigInterceptor } from './common/interceptor/interceptor';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    VerifyComponent
   ],
   imports: [
     BrowserModule,
@@ -16,7 +19,13 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpConfigInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -21,7 +21,7 @@ export class DialogComponent implements OnInit, OnDestroy {
                 this.title = x.title;
                 setTimeout(() => {
                     this.onCloseModal();
-                }, 3000);
+                }, 4000);
             } else {
                 this.onCloseModal();
             }
